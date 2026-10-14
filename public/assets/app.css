@@ -1,0 +1,68 @@
+body{margin:0;background:#f1f5f9;color:#172033;font:14px Arial,sans-serif}*{box-sizing:border-box}.container{max-width:1600px;margin:auto;padding:24px}.page-header{display:flex;justify-content:space-between;gap:16px;align-items:start;margin-bottom:16px}.page-header h1{margin:0 0 5px}.page-header p{margin:0;color:#64748b}.card{background:#fff;border:1px solid #dbe3ec;border-radius:8px;box-shadow:0 1px 3px #0f172a14}.toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:12px;padding:16px;margin-bottom:14px}.pagination{align-items:center}.field{display:flex;flex-direction:column;gap:5px}.field span,label{font-size:12px;font-weight:bold;color:#64748b}input,select,button,.button{min-height:36px;padding:7px 9px;border:1px solid #bac6d4;border-radius:5px;font:inherit}button,.button{border:0;background:#1d4ed8;color:#fff;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}button:disabled{opacity:.55;cursor:not-allowed}.secondary{background:#475569}.success{background:#166534}.danger,.delete-line{background:#b91c1c}.undo-delete{background:#475569}.table-card{overflow-x:auto}table{width:100%;min-width:1250px;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #dbe3ec;text-align:left;white-space:nowrap;vertical-align:middle}th{background:#eaf0f7;font-size:12px}tr.changed{background:#fff7d6}tr.delete-pending{background:#fee2e2;color:#7f1d1d}tr.delete-pending td{text-decoration:line-through}tr.delete-pending input{pointer-events:none;opacity:.5}.number{text-align:right}.new-quantity{width:110px}.summary{margin:12px 0;color:#64748b}.badge{padding:3px 7px;border-radius:999px;font-size:11px;font-weight:bold}.warning{background:#fef3c7;color:#92400e}.open{background:#dcfce7;color:#166534}.message{margin:12px 0;padding:12px;border-radius:6px;white-space:pre-wrap}.error{background:#fee2e2;color:#7f1d1d}.hidden{display:none}.login-body{min-height:100vh;display:grid;place-items:center;padding:20px}.login-card{width:min(420px,100%);background:#fff;border:1px solid #dbe3ec;border-radius:10px;padding:26px}.login-card form{display:grid;gap:8px}.preview-dialog{width:min(900px,95vw);max-height:85vh;border:1px solid #dbe3ec;border-radius:10px;padding:20px}.preview-dialog menu{display:flex;justify-content:end;gap:10px;padding:0}.preview-list{max-height:55vh;overflow:auto}.preview-order{border:1px solid #dbe3ec;border-radius:6px;padding:12px;margin:10px 0}@media(max-width:700px){.container{padding:12px}.page-header{flex-direction:column}}
+
+
+/* Calendario: tabela compacta v1 */
+#calendarDialog,
+#calendarDialog * {
+    box-sizing: border-box;
+}
+
+#calendarDialog .calendar-table table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#calendarDialog .calendar-table th,
+#calendarDialog .calendar-table td {
+    padding: .4rem .35rem;
+    font-size: .85rem;
+    white-space: normal;
+}
+
+#calendarDialog .calendar-table th:nth-child(1) {
+    width: 145px;
+}
+
+#calendarDialog .calendar-table th:nth-child(3) {
+    width: 55px;
+}
+
+#calendarDialog .calendar-table th:nth-child(4) {
+    width: 85px;
+}
+
+#calendarDialog .calendar-table input[type="date"],
+#calendarDialog .calendar-table input[type="text"] {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: .4rem;
+    font-size: .85rem;
+}
+
+#calendarDialog .calendar-table th:nth-child(3),
+#calendarDialog .calendar-table td:nth-child(3) {
+    text-align: center;
+}
+
+#calendarDialog .calendar-table input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+}
+
+#calendarDialog .calendar-table .calendar-remove {
+    width: 100%;
+    min-width: 0;
+    padding: .4rem .3rem;
+    font-size: .8rem;
+}
+
+@media (max-width: 520px) {
+    #calendarDialog .calendar-table table {
+        min-width: 440px;
+    }
+}

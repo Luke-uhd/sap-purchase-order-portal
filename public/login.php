@@ -1,0 +1,9 @@
+<?php
+declare(strict_types=1);
+require dirname(__DIR__).'/src/Bootstrap.php';
+use App\Auth;use App\ServiceLayerClient;use function App\e;
+if(Auth::loggedIn()){header('Location: orders.php');exit;}
+$error='';$companies=\App\app_config('allowed_companies');
+if($_SERVER['REQUEST_METHOD']==='POST'){try{Auth::verifyCsrf($_POST['csrf']??'');$db=trim((string)($_POST['companyDb']??''));$user=trim((string)($_POST['userName']??''));$pass=(string)($_POST['password']??'');if(!isset($companies[$db]))throw new InvalidArgumentException('Empresa SAP inválida.');if($user===''||$pass==='')throw new InvalidArgumentException('Informe usuário e senha.');$login=(new ServiceLayerClient())->login($db,$user,$pass);Auth::storeSapSession($db,$user,$login['cookie'],$login['timeout']);header('Location: orders.php');exit;}catch(Throwable $e){$error=$e->getMessage();}}
+?>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login SAP B1</title><link rel="stylesheet" href="assets/app.css"></head><body class="login-body"><main class="login-card"><h1>Editor de pedidos</h1><p>Entre com suas credenciais SAP Business One.</p><?php if($error!==''): ?><div class="message error"><?=e($error)?></div><?php endif; ?><form method="post" autocomplete="off"><input type="hidden" name="csrf" value="<?=e(Auth::csrfToken())?>"><label>Empresa SAP</label><select name="companyDb" required><option value="">Selecione...</option><?php foreach($companies as $db=>$name): ?><option value="<?=e($db)?>"><?=e($name)?> (<?=e($db)?>)</option><?php endforeach; ?></select><label>Usuário SAP</label><input name="userName" required autofocus><label>Senha SAP</label><input type="password" name="password" required><button>Entrar</button></form></main></body></html>

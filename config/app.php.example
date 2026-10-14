@@ -1,0 +1,28 @@
+<?php
+declare(strict_types=1);
+
+return [
+    // URL base do SAP Business One Service Layer.
+    // Exemplo: https://sap-server.exemplo.local:50000/b1s/v2
+    'service_layer_url' => 'https://SEU_SERVIDOR_SAP:50000/b1s/v2',
+
+    // Em produção, prefira um certificado válido e mantenha true.
+    'ssl_verify_peer' => true,
+    'ssl_verify_host' => 2,
+
+    'session_name' => 'sap_po_editor',
+    'page_size_default' => 20,
+    'page_size_max' => 50,
+
+    // Empresas disponíveis no portal.
+    'allowed_companies' => [
+        'SBO_DEMO' => 'SAP B1 - Demonstração',
+        'SBO_PRODUCAO' => 'SAP B1 - Produção',
+    ],
+
+    // Controle explícito de empresas que aceitam gravação.
+    'write_enabled_companies' => [
+        'SBO_DEMO' => true,
+        'SBO_PRODUCAO' => false,
+    ],
+];

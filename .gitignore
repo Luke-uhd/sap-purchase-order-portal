@@ -1,0 +1,35 @@
+# Local configuration
+/config/app.php
+/config/*.local.php
+.env
+.env.*
+!.env.example
+
+# Runtime data
+/storage/logs/*
+/storage/sessions/*
+/storage/config/*
+!storage/logs/.gitkeep
+!storage/sessions/.gitkeep
+!storage/config/.gitkeep
+
+# Backups and temporary files
+*.bak
+*.backup
+*~
+*.swp
+
+# Logs
+*.log
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dependencies and build output
+node_modules/
+vendor/
+dist/
+build/
